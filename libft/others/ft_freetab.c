@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_freetab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:40:06 by soelalou          #+#    #+#             */
-/*   Updated: 2023/12/06 16:23:16 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/03/19 20:42:39 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_freetab(char **tab)
+void	ft_freetab_char(char **tab)
 {
 	size_t	i;
 
@@ -21,6 +21,19 @@ void	ft_freetab(char **tab)
 	{
 		free(tab[i]);
 		i++;
+	}
+	free(tab);
+}
+
+void	ft_freetab_int(int **tab, size_t i)
+{
+	size_t	j;
+
+	j = 0;
+	while (j < i)
+	{
+		free(tab[j]);
+		j++;
 	}
 	free(tab);
 }
