@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: soelalou <soelalou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:30:22 by soelalou          #+#    #+#             */
-/*   Updated: 2023/12/13 20:03:41 by soelalou         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:08:31 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*init(int fd, char *buf, char *save)
 	char	*tmp;
 
 	readed = 1;
-	while (readed != '\0')
+	while (readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
 		if (readed == -1)
@@ -32,8 +32,9 @@ char	*init(int fd, char *buf, char *save)
 			return (NULL);
 		tmp = save;
 		save = ft_strjoin(tmp, buf);
-		free(tmp);
-		tmp = NULL;
+		if (save == NULL)
+			return (NULL);
+		(free(tmp), tmp = NULL);
 		if (ft_strchr(buf, '\n'))
 			break ;
 	}
@@ -51,7 +52,9 @@ char	*extract(char *line)
 	if (line[i] == '\0' || line[1] == '\0')
 		return (NULL);
 	save = ft_substr(line, i + 1, ft_strlen(line) - i);
-	if (*save == '\0' || !save)
+	if (save == NULL)
+		return (NULL);
+	if (*save == '\0')
 	{
 		free(save);
 		save = NULL;

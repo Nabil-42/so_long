@@ -6,7 +6,7 @@
 #    By: nabil <nabil@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/16 10:05:48 by nabil             #+#    #+#              #
-#    Updated: 2024/03/20 16:27:29 by nabil            ###   ########.fr        #
+#    Updated: 2024/04/06 14:01:48 by nabil            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,21 @@ INCLUDES    = -I$(LIBFT_DIR) -I$(MLX_DIR)
 LIBS        = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 RM          = rm -rf
 
-SRC         = so_long.c \
+SRC         = src/so_long.c \
+				src/utils/move_keybord.c \
+				src/utils/initialise_win.c \
+				src/utils/error.c \
+				src/utils/render_map.c \
+
+SRC_BONUS   = bonus/so_long_bonus.c \
+				src/utils/move_keybord.c \
+				src/utils/initialise_win.c \
+				bonus/error_bonus.c \
+				src/utils/render_map.c \
 
 OBJ_DIR     = bin
 OBJ         = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ_BONUS   = $(addprefix $(OBJ_DIR)/, $(SRC_BONUS:.c=.o))
 
 # **************************************************************************** #
 # COLORS
@@ -68,4 +79,12 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus: $(OBJ_BONUS) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBS) -o $(NAME)
+	@echo "$(CYAN)[so_long]$(END_COLOR) so_long bonus is ready !"
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+.PHONY: all clean fclean re bonus

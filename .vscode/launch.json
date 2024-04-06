@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": ["-lX11", "-lXext", "/home/nabil/42/so_long/src/map/carte_00.ber"], // Spécifiez les options de compilation ici
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/home/nabil/42/so_long/",
+      "program": "/home/nabil/42/so_long/so_long",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+    
+      ]
+    }
+ 
