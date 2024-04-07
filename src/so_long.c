@@ -6,7 +6,7 @@
 /*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:11:07 by nabil             #+#    #+#             */
-/*   Updated: 2024/04/06 14:08:10 by nabil            ###   ########.fr       */
+/*   Updated: 2024/04/07 22:18:04 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ int	main(int argc, char **argv)
         return (ft_dprintf(2, "Error: MinilibX initialisation failed\n"), EXIT_FAILURE);
     
     if (init_map(&map))
-       return (ft_dprintf(2, "Error: Failed to initialize the map\n"), EXIT_FAILURE);
+       return (mlx_destroy_display(map.ptr_mlx), free(map.ptr_mlx),
+            ft_dprintf(2, "Error: Failed to initialize the map\n"), EXIT_FAILURE);
     
     if (read_map(argv[1], &map))
-        return (ft_dprintf(2, "Error: Failed to read the map\n"), EXIT_FAILURE);
+        return (mlx_destroy_display(map.ptr_mlx), 
+                free(map.ptr_mlx),ft_freetab_char(map.grid), ft_freetab_int(map.grid_verif, map.map_y),
+                ft_dprintf(2, "Error: Failed to read the map\n"), EXIT_FAILURE);
     load_images(&map, map.ptr_mlx);
 	    
     map.ptr_windows = mlx_new_window(map.ptr_mlx, map.win_width, map.win_height, "MAMAMIA !");

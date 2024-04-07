@@ -6,7 +6,7 @@
 /*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 19:16:58 by nabil             #+#    #+#             */
-/*   Updated: 2024/04/06 14:39:16 by nabil            ###   ########.fr       */
+/*   Updated: 2024/04/07 14:20:02 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,15 @@ int chemin_valide(t_map *map)
     int y;
     int x;
     
-    
-    y = 0;
-    while (y < map->map_y)
+    y = -1;
+    while (y++ < map->map_y - 1)
     {
         x = 0;
         while (x < map->map_x - 1)
         {
             if (map->grid[y][x] != 'P' && map->grid[y][x] != 'E'
-            && map->grid[y][x] != 'C' && map->grid[y][x] != '1' && map->grid[y][x] != '0'
-            && map->grid[y][x] != 'G')
+            && map->grid[y][x] != 'C' && map->grid[y][x] != '1' 
+            && map->grid[y][x] != '0'&& map->grid[y][x] != 'G')
                 return (ft_dprintf(2, "Erreur: Caractéres dans carte inconnu\n"), 1);
             if (map->grid[y][x] == 'G')
                 map->count_gobelin += 1;
@@ -84,7 +83,6 @@ int chemin_valide(t_map *map)
             }
             ++x;
         }
-        ++y;
     }
     return (0);
 }

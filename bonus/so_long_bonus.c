@@ -6,7 +6,7 @@
 /*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:11:07 by nabil             #+#    #+#             */
-/*   Updated: 2024/04/06 16:52:20 by nabil            ###   ########.fr       */
+/*   Updated: 2024/04/07 14:15:55 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void free_images(t_map *map)
         ++i;
     }
 }
+
 int	close_window(t_map *map)
 {
     ft_freetab_char(map->grid);

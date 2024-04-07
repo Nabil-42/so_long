@@ -6,7 +6,7 @@
 /*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:51:11 by nabil             #+#    #+#             */
-/*   Updated: 2024/04/06 14:08:51 by nabil            ###   ########.fr       */
+/*   Updated: 2024/04/07 13:51:43 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int read_map(char *filename, t_map *map)
 	
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (ft_dprintf(2, "Erreur: Impossible d'ouvrir le fichier %s\n", filename), EXIT_FAILURE);
+		return (ft_dprintf(2, "Erreur: Readmap = %s\n",filename), 1);
 	y = 0;
 	while (y < map->map_y)
 	{
 		x = 0;
 		line = get_next_line(fd);
 		if (line == NULL)
-			return (ft_dprintf(2,"Erreur: Impossible de lire le fichier %s\n", filename), EXIT_FAILURE);
+			return (ft_dprintf(2,"Erreur: Impossible de lire le fichier %s\n", filename), 1);
 		while (line[x])
 		{
 			map->grid[y][x] = line[x];

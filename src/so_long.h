@@ -6,7 +6,7 @@
 /*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:16:01 by nabil             #+#    #+#             */
-/*   Updated: 2024/04/06 13:15:53 by nabil            ###   ########.fr       */
+/*   Updated: 2024/04/07 13:59:52 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ typedef struct s_gobelin
     
 }t_gobelin;
 
+void    w_fonction(t_map *map, int keycode);
+void    a_fonction(t_map *map, int keycode);
+void    s_fonction(t_map *map, int keycode);
+void    d_fonction(t_map *map, int keycode);
+void	move_character(t_map *map, int keycode);
 int chemin_valide(t_map *map);
 int key_hook(int keycode, t_map *map);
 void render_map(t_map *map, void *mlx, void *win, int keycode);

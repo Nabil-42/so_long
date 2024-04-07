@@ -6,7 +6,7 @@
 /*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 19:16:58 by nabil             #+#    #+#             */
-/*   Updated: 2024/04/06 15:11:52 by nabil            ###   ########.fr       */
+/*   Updated: 2024/04/07 22:27:06 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int check_taille_map(char *filename, t_map *map)
 {    
 	map->fd = open(filename, O_RDONLY);
 	if (map->fd == -1)
-		return (ft_dprintf(2, "Erreur: Impossible d'ouvrir le fichier %s\n", filename), EXIT_FAILURE);
+		return (close(map->fd), ft_dprintf(2, "Erreur: Impossible d'ouvrir le fichier %s\n", filename), EXIT_FAILURE);
     map->line = get_next_line(map->fd);
     if (map->line == NULL)
 		    return (close(map->fd), ft_dprintf(2,"Erreur: Impossible de lire le fichier %s\n", filename), EXIT_FAILURE);

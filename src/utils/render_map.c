@@ -6,7 +6,7 @@
 /*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 11:04:37 by nabil             #+#    #+#             */
-/*   Updated: 2024/04/06 16:55:54 by nabil            ###   ########.fr       */
+/*   Updated: 2024/04/07 14:27:40 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,9 @@ void render_map_hero(t_map *map, void *mlx, void *win, int keycode)
 
 void if_render(t_map *map, void *mlx, void *win, int keycode)
 {
+            char *str;
+            
+            str =ft_itoa(map->counter);
             if (map->grid[map->render_y][map->render_x] == '1')
             	mlx_put_image_to_window(mlx, win, map->images[1], map->window_x, map->window_y);
 			if (map->grid[map->render_y][map->render_x] == '0')
@@ -139,11 +142,15 @@ void if_render(t_map *map, void *mlx, void *win, int keycode)
             	render_map_hero(map, map->ptr_mlx, map->ptr_windows, keycode);
             if (map->grid[map->render_y][map->render_x] == 'G')
             	render_map_gobelin(map, map->ptr_mlx, map->ptr_windows, keycode);
-            mlx_string_put(map->ptr_mlx, map->ptr_windows, 10, 10, 0xFFFFFF, ft_itoa(map->counter));
+            mlx_string_put(map->ptr_mlx, map->ptr_windows, 10, 10, 0xFFFFFF, str);
+            free(str);
 }
 
 void if_render_bis(t_map *map, void *mlx, void *win, int keycode)
 {
+     char *str;
+            
+    str = ft_itoa(map->counter);
     if (map->grid[map->render_y][map->render_x] == '1')
             mlx_put_image_to_window(mlx, win, map->images[1], map->window_x, map->window_y);
 	if (map->grid[map->render_y][map->render_x] == '0')
@@ -156,7 +163,8 @@ void if_render_bis(t_map *map, void *mlx, void *win, int keycode)
             render_map_hero_bis(map, map->ptr_mlx, map->ptr_windows, keycode);
     if (map->grid[map->render_y][map->render_x] == 'G')
             render_map_gobelin_bis(map, map->ptr_mlx, map->ptr_windows, keycode);
-    mlx_string_put(map->ptr_mlx, map->ptr_windows, 10, 10, 0xFFFFFF, ft_itoa(map->counter));
+    mlx_string_put(map->ptr_mlx, map->ptr_windows, 10, 10, 0xFFFFFF, str);
+    free(str);
 }
 
 void render_map(t_map *map, void *mlx, void *win, int keycode)

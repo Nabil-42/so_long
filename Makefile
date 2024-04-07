@@ -6,7 +6,7 @@
 #    By: nabil <nabil@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/16 10:05:48 by nabil             #+#    #+#              #
-#    Updated: 2024/04/06 14:01:48 by nabil            ###   ########.fr        #
+#    Updated: 2024/04/07 13:58:10 by nabil            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,16 @@ SRC         = src/so_long.c \
 				src/utils/initialise_win.c \
 				src/utils/error.c \
 				src/utils/render_map.c \
+				src/utils/move_gobelin.c \
+				src/utils/key_path.c \
 
 SRC_BONUS   = bonus/so_long_bonus.c \
 				src/utils/move_keybord.c \
 				src/utils/initialise_win.c \
 				bonus/error_bonus.c \
 				src/utils/render_map.c \
+				src/utils/move_gobelin.c \
+				src/utils/key_path.c \
 
 OBJ_DIR     = bin
 OBJ         = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
